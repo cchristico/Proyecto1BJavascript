@@ -17,17 +17,17 @@
 <li><a href=""><span class="icon" data-icon="R"></span>Opciones</a>
 	<ul class="alt">
     <li class="divider"><a href="2.html">var vs let vs const</a></li>
-    <li class="divider"><a href="">IIFEs ahora Blocks</a></li>
+    <li class="divider"><a href="3.html">IIFEs ahora Blocks</a></li>
     <li class="divider"><a href="4.html">Arrow Functions</a></li>
-    <li class="divider"><a href="">Strings.includes() .repeat()</a></li>
+    <li class="divider"><a href="5.html">Strings.includes() .repeat()</a></li>
     <li class="divider"><a href="6.html">Template literals</a></li>
-    <li class="divider"><a href="">Destructuring arrays</a></li>
+    <li class="divider"><a href="7.html">Destructuring arrays</a></li>
     <li class="divider"><a href="8.html">Destructuring objects</a></li>
-    <li class="divider"><a href="">Modules export and import</a></li>
+    <li class="divider"><a href="9.html">Modules export and import</a></li>
     <li class="divider"><a href="10.html">Default Parameters, Rest Parameters, Named Parameters</a></li>
-    <li class="divider"><a href="">Spread Operator</a></li>
+    <li class="divider"><a href="11.html">Spread Operator</a></li>
     <li class="divider"><a href="12.html">Classes</a></li>
-    <li class="divider"><a href="">Promises (goodbye callback hell)</a></li>
+    <li class="divider"><a href="13.html">Promises (goodbye callback hell)</a></li>
     <li class="divider"><a href="14.html">Getter and Setter in Classes</a></li>
 	</ul>
 	
@@ -41,35 +41,94 @@
 	 
 <div class="col_12">
 	<div class="col_12">
-	<h3>ECMAScript</h3>
+	<h3>var vs let vs const</h3>
+	<br>
+	<h4>var</h4>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. 
+    Javascript solo tenía una forma de declarar variables. Se hacía con la palabra clave "var" seguida del nombre de variable a declarar (o variables separadas por comas). Ejemplo:
 </p>
-<di class="col_12">
-<pre>
-    var x = 3;
-function func(randomize) {
-    if (randomize) {
-        var x = Math.random(); // (A) scope: whole function
-        return x;
-    }
-    return x; // accesses the x from line A
-}
-func(false); // undefined
-</pre>    
-</di>
-<br>
-<di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
-<pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
-</pre>
-</di>
+<div class="col_12" aling = "center" >
+   <pre >
+    var variable; 
+    </pre>
+</div>
 
+<p>
+    Esta variable podía ser de ámbito global o local. Su ámbito depende del lugar donde se declara pero las posiblidades eran bien limitadas. Para hacer una variable global se tenía que declarar simplemente fuera del cuerpo de una función. En cambio, las variables locales eran declaradas dentro de una función y solo eran accesibles dentro del código de esa función.
+    
+</p>
+<div class="col_12">
+<pre>
+    function () {
+var miVar;
+  console.log(miVar);
+  if (true) {
+    miVar = "Hola mundo";
+  }
+  console.log(miVar);
+};
+</pre>    
+</div>
+<p>
+    La salida de la consola sería en este caso: 
+</p>
+
+<pre>
+    undefined
+    Hola mundo
+</pre>
+<br>
+
+<p>
+    Como se puede observar, en cuanto ve una variable ya sea parte de un if o de la propia función pasa a declararla antes de seguir ejecutando el código (Esto es debido a la doble pasada que hace por el código el intérprete). Por eso, en el primer console.log sale como declarada pero sin valor definido.
+</p>
+
+<h4>let</h4>
+
+<div class="col_12">
+<p> 
+    Para solucionar todo esto en ECMAscript ha implementado una forma nueva de declarar variables que ahora será la más indicada en la mayoría de los casos. Se trata de la construcción "let" que veremos mejor con un ejemplo similar:
+ 
+</p>
+<pre>
+    function () {
+  console.log(miVar);
+  if (true) {
+    let miVar = "Hola mundo";
+  }
+  console.log(miVar);
+};
+</pre>
+
+<p>
+    La clave de let es que restringe su existencia al ámbito donde ha sido declarada (cualquier ámbito expresado con unas llaves). Por tanto, la salida de la consola sería en este caso:
+</p>
+
+<pre>
+    undefined
+    undefined
+</pre>
+<p>
+    Esta salida se debe a que let es la nueva forma de declarar variables de bloque, sólo existirán dentro del bloque que las contenga y no contaminará nunca el código a su alrededor.
+</p>
+</div>
+
+<h4>const</h4>
+<div class="col_12">
+    <p>
+        Crea una variable donde su valor es inalterable a lo largo del código.
+        Ejemplo;
+    </p>
+     <pre>
+         const MIVARIABLE = 1;
+         console. log(MIVARIABLE);
+     </pre>
+     <p>
+         El resultado que devuelve es 1. Pero si a continuacion se vuelve a asigar otro valor a la variable devolvera error.
+     </p>
+     
+
+</div>
 
 	</div>
 </div>
