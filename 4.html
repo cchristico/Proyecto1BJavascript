@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head>
+<title>ECMAScript</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="" />
+<meta name="copyright" content="" />
+<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />                          <!-- CUSTOM STYLES -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/kickstart.js"></script>                                  <!-- KICKSTART -->
+</head><body>
+
+<!-- Menu Horizontal -->
+<ul class="menu">
+<li class="current"><a href="index.html">Inicio</a></li>
+<li><a href=""><span class="icon" data-icon="R"></span>Opciones</a>
+	<ul class="alt">
+    <li class="divider"><a href="2.html">var vs let vs const</a></li>
+    <li class="divider"><a href="3.html">IIFEs ahora Blocks</a></li>
+    <li class="divider"><a href="4.html">Arrow Functions</a></li>
+    <li class="divider"><a href="5.html">Strings.includes() .repeat()</a></li>
+    <li class="divider"><a href="6.html">Template literals</a></li>
+    <li class="divider"><a href="7.html">Destructuring arrays</a></li>
+    <li class="divider"><a href="8.html">Destructuring objects</a></li>
+    <li class="divider"><a href="9.html">Modules export and import</a></li>
+    <li class="divider"><a href="10.html">Default Parameters, Rest Parameters, Named Parameters</a></li>
+    <li class="divider"><a href="11.html">Spread Operator</a></li>
+    <li class="divider"><a href="12.html">Classes</a></li>
+    <li class="divider"><a href="13.html">Promises (goodbye callback hell)</a></li>
+    <li class="divider"><a href="14.html">Getter and Setter in Classes</a></li>
+	</ul>
+	
+</li>
+<li class="divider"><a href="aboutUs.html">About US</a></li>
+</ul>
+
+<div class="grid">
+	
+<!-- ===================================== END HEADER ===================================== -->
+	 
+<div class="col_12">
+	<div class="col_12">
+	<h3>Arrow Functions</h3>
+<p>
+    ECMAScript  proporciona una nueva manera de crear funciones que solo contienen una línea de declaración. Este nuevo tipo de función se llama lambda o función flecha. El objetivo de estas funciones es la de abordar y resolver los siguientes aspectos:
+    
+</p>
+
+<p>
+    En primer lugar, son menos detalladas que las expresiones de función tradicional:
+</p>
+<di class="col_12">
+<pre>
+const arr = [1, 2, 3];
+const squares = arr.map(x => x * x);
+
+// Funcion Tradicionl
+const squares = arr.map(function (x) { return x * x });
+</pre>    
+</di>
+<br>
+<div class="col_12">
+<p> En segundo lugar, Anterior a las funciones flecha, cada nueva función definía su propio valor de this (un nuevo objeto en el caso de un constructor, undefined en llamadas a funciones en modo estricto, el objeto contextual si la función se llama como un "método de un objeto", etc.). Lo cual resultaba molesto cuando se intentaba aplicar programación orientada a objetos. </p>
+<pre>
+    function Person() { 
+   // El constructor Person() define `this` como una instancia de sí mismo.   
+   this.age = 0; 
+   setInterval(function growUp() { 
+      // En modo no estricto, la función growUp() define `this` 
+      // como el objeto global, el cual es diferente al objeto `this` 
+      // definido por el constructor Person().
+      this.age++; 
+   }, 1000); 
+} 
+
+var p = new Person();
+</pre>
+
+<p>
+    En ECMAScript, este problema fué corregido asignándosele el valor de this a una variable por fuera de la función interna.
+</p>
+
+<pre>
+    
+    function Person() {
+  var self = this; // Algunas personas prefieren `that` en lugar de `self`. 
+                   // Escoja cualquiera pero sea consistente.
+  self.age = 0;
+
+  setInterval(function growUp() {
+    // La función tipo callback apunta a la variable `self` la cual
+    // contiene el objeto esperado.
+    self.age++;
+  }, 1000);
+}
+</pre>
+
+</div>
+
+
+	</div>
+</div>
+
+</div><!-- END GRID -->
+
+<!-- ===================================== START FOOTER ===================================== -->
+<div class="clear"></div>
+<div id="footer">
+&copy; Copyright 2011–2012 All Rights Reserved. This website was built with <a href="http://www.99lime.com">HTML KickStart</a>
+</div>
+
+</body>
+</html>
