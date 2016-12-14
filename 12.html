@@ -43,31 +43,45 @@
 	<div class="col_12">
 	<h3>Classes</h3>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. 
+    Antes en JavaScript si uno quería programar orientado a objeto lo que tenía que hacer es aprovecharse de la herencia de prototipos que posee JS para poder crear las "clases", esto tenía siempre una sintaxis similar a esta: 
 </p>
 <di class="col_12">
 <pre>
-    var x = 3;
-function func(randomize) {
-    if (randomize) {
-        var x = Math.random(); // (A) scope: whole function
-        return x;
-    }
-    return x; // accesses the x from line A
+    function Persona(nombre, edad) {
+  this.nombre = nombre;
+  this.edad   = edad;
 }
-func(false); // undefined
+Persona.prototype.presentarse = function() {
+  return 'Hola me llamo ' + this.nombre + ' y tengo ' + this.edad + ' años';
+}
+
+var Sergio = new Persona('Sergio', 22);
+Sergio.presentarse(); // 'Hola me llamo Sergio y tengo 22 años'
 </pre>    
 </di>
 <br>
 <di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
+<p>Para facilitar esto en ECMAScript 6 se va a agregar una forma de crear estas clases, como en los demás lenguajes, aunque al final esta nueva sintaxis para hacer POO es simplemente una capa sobre la sintaxis actual mediante prototipos, solo que más simple de entender. </p>
 <pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
+    class Persona {
+  // constructor donde definir las variables que se reciben y guardarlas en el objeto usando this
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad   = edad;
+  }
+
+  // método para presentarse
+  presentarse() {
+    return 'Hola me llamo ' + this.nombre + ' y tengo ' + this.edad + ' años';
+  }
+}
+
+var Sergio = new Persona('Sergio', 22);
+Sergio.presentarse();
 </pre>
+<p>
+    Cómo se puede ver, la sintaxis es mucho más similar a la de otros lenguajes (teniendo un constructor y métodos). Esto sin embargo es, como dije antes, una capa por encima del método actual, por esa razón al momento de instancia la clase el resto de la sintaxis es igual.
+</p>
 </di>
 
 
