@@ -43,33 +43,27 @@
 	<div class="col_12">
 	<h3>Getter and Setter in Classes</h3>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. 
+    Con ECMAscript se puede inizializar también directamente dentro de las clases y no sólo dentro de los inicializadores de objetos. <br>
+    Ejemplo: 
 </p>
 <di class="col_12">
 <pre>
-    var x = 3;
-function func(randomize) {
-    if (randomize) {
-        var x = Math.random(); // (A) scope: whole function
-        return x;
+    class Rectangle {
+    constructor (width, height) {
+        this._width  = width
+        this._height = height
     }
-    return x; // accesses the x from line A
+    set width  (width)  { this._width = width               }
+    get width  ()       { return this._width                }
+    set height (height) { this._height = height             }
+    get height ()       { return this._height               }
+    get area   ()       { return this._width * this._height }
 }
-func(false); // undefined
+var r = new Rectangle(50, 20)
+r.area === 1000
 </pre>    
 </di>
 <br>
-<di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
-<pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
-</pre>
-</di>
-
 
 	</div>
 </div>
