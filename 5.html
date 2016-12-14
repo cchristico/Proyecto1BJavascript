@@ -41,45 +41,20 @@
 	 
 <div class="col_12">
 	<div class="col_12">
-	<h3>Template literals</h3>
+	<h3>Strings .includes() .repeat()</h3>
 <p>
-    El uso de Template Literals o plantillas literales presenta caracteristicas asociadas a la construccion de strings sin el uso de caracteres de escape o ayuda
+    Las opciones de la libreria estandar de ES6 ha incrementado y, dentro de esos cambios se encuentran los nuevos metodos de string, como .include() y .repeat().
 </p>
 <di class="col_12">
 <pre>
-//Impresion de Comillas en Strings
-var text = "Expresiones \"con comillas\" a ser impresas en consola."; // Permite imprimir comillas
-console.log(text);
+var str = 'Hola mundo, frase ser o no ser, esa es la pregunta.';
 
-let text2 = `Esta expresion tiene "doble comillas".`; // Permite imprimir comillas
-        console.log(text2);
-        
-//Concatenacion
-var name = 'Max'; 
-var age = 8;
-
-//Antes -- Concatenacion con '+'
-console.log('Mi perro se llama ' + name + ' y tiene ' + age + ' anios.');
-
-const name2 = 'Misty';
-const age2 = 6;
-
-// Concatenacion con ${variable}
-console.log(`Mi gata se llama ${name2} y tiene ${age2} anios.`);
-
-//Versiones anteriores de ES para salto de linea
-var text3 = (
-    'cat\n' +
-    'dog\n' +
-    'nickelodeon'
-);
-console.log(text3);
-
-//Se mantiene los saltos de linea que se especifica
-let text4 = (`cat
-            dog
-            nickelodeon`);
-console.log(text4);
+//.include(Substring a buscar)
+console.log(str.includes('Hola')); // true - consta en la cadena
+console.log(str.includes('es la pregunta')); // true - consta en la cadena
+console.log(str.includes('hola Mundo')); // false - Compara mayusculas y minusculas
+console.log(str.includes('SER', 1)); // false - Compara mayusculas y minusculas
+console.log(str.includes('Pregunta')); // false - Compara mayusculas y minusculas
 </pre>    
 </di>
 <br>
