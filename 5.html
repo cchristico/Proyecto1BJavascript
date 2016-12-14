@@ -17,17 +17,17 @@
 <li><a href=""><span class="icon" data-icon="R"></span>Opciones</a>
 	<ul class="alt">
     <li class="divider"><a href="2.html">var vs let vs const</a></li>
-    <li class="divider"><a href="">IIFEs ahora Blocks</a></li>
+    <li class="divider"><a href="3.html">IIFEs ahora Blocks</a></li>
     <li class="divider"><a href="4.html">Arrow Functions</a></li>
-    <li class="divider"><a href="">Strings.includes() .repeat()</a></li>
+    <li class="divider"><a href="5.html">Strings.includes() .repeat()</a></li>
     <li class="divider"><a href="6.html">Template literals</a></li>
-    <li class="divider"><a href="">Destructuring arrays</a></li>
+    <li class="divider"><a href="7">Destructuring arrays</a></li>
     <li class="divider"><a href="8.html">Destructuring objects</a></li>
-    <li class="divider"><a href="">Modules export and import</a></li>
+    <li class="divider"><a href="9.html">Modules export and import</a></li>
     <li class="divider"><a href="10.html">Default Parameters, Rest Parameters, Named Parameters</a></li>
-    <li class="divider"><a href="">Spread Operator</a></li>
+    <li class="divider"><a href="11.html">Spread Operator</a></li>
     <li class="divider"><a href="12.html">Classes</a></li>
-    <li class="divider"><a href="">Promises (goodbye callback hell)</a></li>
+    <li class="divider"><a href="13.html">Promises (goodbye callback hell)</a></li>
     <li class="divider"><a href="14.html">Getter and Setter in Classes</a></li>
 	</ul>
 	
@@ -41,59 +41,39 @@
 	 
 <div class="col_12">
 	<div class="col_12">
-	<h3>Template literals</h3>
+	<h3>Strings .includes() .repeat()</h3>
 <p>
-    El uso de Template Literals o plantillas literales presenta caracteristicas asociadas a la construccion de strings sin el uso de caracteres de escape o ayuda
+    ES6 implementa nuevos métodos para String, entre los cuales se nota .include() y .repeat().
 </p>
 <di class="col_12">
-<pre>
-//Impresion de Comillas en Strings
-var text = "Expresiones \"con comillas\" a ser impresas en consola."; // Permite imprimir comillas
-console.log(text);
 
-let text2 = `Esta expresion tiene "doble comillas".`; // Permite imprimir comillas
-        console.log(text2);
-        
-//Concatenacion
-var name = 'Max'; 
-var age = 8;
+<h6>.include</h6>
+ <p>El método includes () determina si se puede encontrar una cadena dentro de otra cadena, devolviendo true o false según sea apropiado.</p>
+    <pre>
+'Blue Whale'.includes('blue'); // returns false
+var str = 'To be, or not to be, that is the question.';
 
-//Antes -- Concatenacion con '+'
-console.log('Mi perro se llama ' + name + ' y tiene ' + age + ' anios.');
-
-const name2 = 'Misty';
-const age2 = 6;
-
-// Concatenacion con ${variable}
-console.log(`Mi gata se llama ${name2} y tiene ${age2} anios.`);
-
-//Versiones anteriores de ES para salto de linea
-var text3 = (
-    'cat\n' +
-    'dog\n' +
-    'nickelodeon'
-);
-console.log(text3);
-
-//Se mantiene los saltos de linea que se especifica
-let text4 = (`cat
-            dog
-            nickelodeon`);
-console.log(text4);
+console.log(str.includes('To be'));       // true
+console.log(str.includes('question'));    // true
+console.log(str.includes('nonexistent')); // false
+console.log(str.includes('To be', 1));    // false
+console.log(str.includes('TO BE'));       // false
 </pre>    
 </di>
 <br>
-<!--<di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
+<di class="col_12">
+<h6>.repeat()</h6>
+<p> El método repeat () construye y devuelve una nueva cadena que contiene el número especificado de copias de la cadena que se espesifico </p>
 <pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
+'abc'.repeat(-1);   //No esta dentro del rango Error!!
+'abc'.repeat(0);    // ''
+'abc'.repeat(1);    // 'abc'
+'abc'.repeat(2);    // 'abcabc'
+'abc'.repeat(3.5);  // 'abcabcabc' (el contador se convierte al entero superior)
+'abc'.repeat(1/0);  // Eror de rango
 </pre>
 </di>
--->
+
 
 	</div>
 </div>
