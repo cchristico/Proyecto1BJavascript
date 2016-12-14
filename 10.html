@@ -42,35 +42,72 @@
 <div class="col_12">
 	<div class="col_12">
 	<h3>Default Parameters, Rest Parameters, Named Parameters</h3>
+
+<h4>Default Parameters:</h4>
+<p> 
+    Los parámetros por defecto de una función permiten que los parámetros formales de la función sean inicializados con valores por defecto si no se pasan valores o los valores pasados son undefined.  
+</p>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. 
+    Anteriormente, la estrategia general para colocar valores por defecto era probar los valores de los parámetros en el cuerpo de la función y asignarles un valor si eran undefined. Si en el siguiente ejemplo no se proveyera un valor para b en la llamada, su valor sería undefined cuando se evalúe a*b y la llamada a multiplicar hubiera retornado NaN.
 </p>
 <di class="col_12">
 <pre>
-    var x = 3;
-function func(randomize) {
-    if (randomize) {
-        var x = Math.random(); // (A) scope: whole function
-        return x;
-    }
-    return x; // accesses the x from line A
+    function multiplicar(a, b) {
+  b = typeof b !== 'undefined' ?  b : 1;
+
+  return a*b;
 }
-func(false); // undefined
+
+multiplicar(5); // 5
 </pre>    
 </di>
 <br>
-<di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
+<div class="col_12">
+<p> Ahora,con parámetros por defecto, la verificación en el cuerpo de la función ya no es necesaria. Ahora, puedes colocar simplemente 1 como el valor por defecto de b en la cabecera de la función:    </p>
 <pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
+    function multiplicar(a, b = 1) {
+  return a*b;
+}
+
+multiplicar(5); // 5
 </pre>
-</di>
+</div>
+<h4>Rest Parameters:</h4>
+<p>
+    La sintaxis de los parámetros rest nos permiten representar un número indefinido de argumentos como un arreglo. Es decir si el ultimo argumento definido de una función se le antepone con (. . .), éste se convierte en un arreglo cuyos elementos  desde el 0 (inclusivo) hasta theArgs.length (exclusivo) son pasados a la funció<br>
+    Ejemplo:
+</p>
+<pre>
+    function fun1(...theArgs) {
+  console.log(theArgs.length);
+}
 
+fun1();  // 0
+fun1(5); // 1
+fun1(5, 6, 7); // 3
+</pre>
 
+<h4>Named Parameters:</h4>
+    <p>
+        Puede simular los parámetros de llamada si desestructura con un patrón de objeto en la lista de parámetros:
+    </p>
+
+<pre>
+    
+    function selectEntries({ start=0, end=-1, step=1 } = {}) { // (A)
+    // The object pattern is an abbreviation of:
+    // { start: start=0, end: end=-1, step: step=1 }
+
+    // Use the variables `start`, `end` and `step` here
+    ···
+}
+
+selectEntries({ start: 10, end: 30, step: 2 });
+selectEntries({ step: 3 });
+selectEntries({});
+selectEntries();
+    
+</pre>
 	</div>
 </div>
 
