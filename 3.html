@@ -41,32 +41,47 @@
 	 
 <div class="col_12">
 	<div class="col_12">
-	<h3>ECMAScript</h3>
+	<h3>IIFEs ahora Blocks</h3>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. 
+    En JavaScript, cada función , cuando se invoca, crea un nuevo contexto de ejecución. Dado que las variables y funciones definidas dentro de una función sólo se puede acceder a su interior, pero no fuera, de ese contexto.
 </p>
 <di class="col_12">
 <pre>
-    var x = 3;
-function func(randomize) {
-    if (randomize) {
-        var x = Math.random(); // (A) scope: whole function
-        return x;
-    }
-    return x; // accesses the x from line A
+    // Esta duncion retorna otra funcion que tiene aceso a la varibla privada i
+//la funcion retornada es, efectivamente, "privilegiada".
+
+function contador() {
+  // `i`  es accedida solo dentro de 'contador'.
+  var i = 0;
+
+  return function() {
+    console.log( ++i );
+  };
 }
-func(false); // undefined
+
+//Note que counter1 y counter 2 tiene su propio alcance de i.
+
+var counter = contador();
+counter(); // logs: 1
+counter(); // logs: 2
+
+var counter2 = contador();
+counter2(); // logs: 1
+counter2(); // logs: 2
+
+i; // ReferenceError: i no esta definida(solo existe dentro de contador()
 </pre>    
 </di>
 <br>
 <di class="col_12">
-<p>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam maximus porttitor. Aenean condimentum ullamcorper metus vel fermentum. Nunc a magna euismod, vulputate lectus et, varius lorem. Nunc mattis molestie quam, sit amet semper eros consectetur at. </p>
+<p>Immediately Invoked Function Expressions permite encerar los valores para que sean usados dentro de su alcance. En ES6, ahora se tiene la opcion de crear bloques o funciones. </p>
 <pre>
-    (function (p) {
-     p(document).ready(function () {
-          // my code
-     });
-})(jQuery);
+   //Bloques
+{
+    //Ayuda a realizar operaciones, en el alncace definido entre {}
+    let i = 4;
+    console.log(i);
+};
 </pre>
 </di>
 
